@@ -13,12 +13,12 @@ public class AdjacencyListGraph {
         nodeMap = new HashMap<>();
     }
 
-    public void addConnection(Node n1, Node n2, int weight) {
+    public void addConnection(Node n1, Node n2, double weight) {
         n1.addNeighbor(n2, weight);
         n2.addNeighbor(n1, weight);
     }
 
-    public boolean addConnection(String n1name, String n2name, int weight) {
+    public boolean addConnection(String n1name, String n2name, double weight) {
         Node n1 = nodeMap.get(n1name);
         Node n2 = nodeMap.get(n2name);
 

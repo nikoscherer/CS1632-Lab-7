@@ -12,8 +12,8 @@ class NodeTest {
         Node n2 = new Node("B");
         Node n3 = new Node("C");
 
-        n1.addNeighbor(n2, 5);
-        n2.addNeighbor(n1, 5);
+        n1.addNeighbor(n2, 5.0);
+        n2.addNeighbor(n1, 5.0);
 
         assertEquals(5, n1.getNeighbors().get(n2));
         assertEquals(5, n2.getNeighbors().get(n1));
