@@ -1,4 +1,5 @@
 import Graphs.AdjacencyListGraph;
+import Graphs.AdjacencyMatrixGraph;
 import Graphs.Graph;
 import Graphs.Node;
 
@@ -15,6 +16,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         AdjacencyListGraph adjListGraph = new AdjacencyListGraph();
+        AdjacencyMatrixGraph adjMatrixGraph = new AdjacencyMatrixGraph();
 
         System.out.print("What file would you like to run BFS on? ");
         String fileName = scanner.nextLine().trim();
@@ -27,13 +29,20 @@ public class Main {
 
                 // Add nodes if they don't exist
                 if (!adjListGraph.contains(connection[0])) {
-                    adjListGraph.addNode(new Node(connection[0]));
+                    Node n = new Node(connection[0]);
+                    adjListGraph.addNode(n);
+                    adjMatrixGraph.addNode(n);
                 }
                 if (!adjListGraph.contains(connection[1])) {
-                    adjListGraph.addNode(new Node(connection[1]));
+                    Node n = new Node(connection[1]);
+                    adjListGraph.addNode(n);
+                    adjMatrixGraph.addNode(n);
                 }
 
                 adjListGraph.addConnection(connection[0], connection[1],
+                        Double.parseDouble(connection[2]));
+
+                adjMatrixGraph.addConnection(connection[0], connection[1],
                         Double.parseDouble(connection[2]));
             }
 
@@ -41,7 +50,11 @@ public class Main {
             String startNode = scanner.nextLine().trim();
 
             Node start = adjListGraph.getNode(startNode);
+            System.out.println("BFS using Adjacency List Graph: ");
             runBFS(adjListGraph, start);
+
+            System.out.println("BFS using Adjacency Matrix Graph: ");
+            runBFS(adjMatrixGraph, start);
         } catch (IOException e) {
             System.out.println("An error occurred.");
         }

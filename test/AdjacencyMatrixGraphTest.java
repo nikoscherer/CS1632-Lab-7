@@ -1,14 +1,14 @@
-package Graphs;
-
+import Graphs.AdjacencyMatrixGraph;
+import Graphs.Node;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class AdjacencyListGraphTest {
+class AdjacencyMatrixGraphTest {
 
     @Test
     void addConnection() {
-        AdjacencyListGraph graph = new AdjacencyListGraph();
+        AdjacencyMatrixGraph graph = new AdjacencyMatrixGraph();
 
         Node n1 = new Node("A");
         Node n2 = new Node("B");
