@@ -4,20 +4,18 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class AdjacencyListGraph {
-    private List<Node> nodes;
-    private HashMap<String, Node> nodeMap;
-
+public class AdjacencyListGraph extends Graph {
     public AdjacencyListGraph() {
-        nodes = new ArrayList<>();
-        nodeMap = new HashMap<>();
+        super();
     }
 
+    @Override
     public void addConnection(Node n1, Node n2, double weight) {
         n1.addNeighbor(n2, weight);
         n2.addNeighbor(n1, weight);
     }
 
+    @Override
     public boolean addConnection(String n1name, String n2name, double weight) {
         Node n1 = nodeMap.get(n1name);
         Node n2 = nodeMap.get(n2name);
@@ -31,20 +29,7 @@ public class AdjacencyListGraph {
         return true;
     }
 
-    public void addNode(Node n) {
-        nodes.add(n);
-        nodeMap.put(n.getName(), n);
-    }
-
-    public boolean contains(Node node) {
-        return nodes.contains(node);
-    }
-
-    public Node getNode(String nodeName) {
-        return nodeMap.get(nodeName);
-    }
-
-    public boolean contains(String nodeName) {
-        return nodeMap.containsKey(nodeName);
+    public HashMap<Node, Double> getNeighbors(Node node) {
+        return node.getNeighbors();
     }
 }
